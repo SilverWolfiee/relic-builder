@@ -212,11 +212,11 @@ export default function CharacterStat() {
     <>
       <div className="flex justify-between">
         <div className="flex">
-          <img className="w-52 aspect-square object-contain" src={`https://api.hakush.in/hsr/UI/avatarshopicon/${idChar}.webp`} alt={idChar} />
+          <img className="w-52 aspect-square object-contain" src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarshopicon/avatar/${id}.webp`} alt={idChar} />
           <div className="text-lg font-semibold">
             <p>Eidolon {rankChar}</p>
             {idLc && <p>Superimpose {rankLc}</p>}
-            {idLc && <img className="w-32 aspect-square object-contain" src={`https://api.hakush.in/hsr/UI/lightconemediumicon/${idLc}.webp`} alt={idLc} />}
+            {idLc && <img className="w-32 aspect-square object-contain" src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/itemfigures/lightcone/${idLc}.webp`} alt={idLc} />}
           </div>
         </div>
         <div className="text-lg font-semibold flex gap-4">

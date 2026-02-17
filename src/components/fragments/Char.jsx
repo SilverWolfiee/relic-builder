@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 
-const path = ["Knight", "Mage", "Priest", "Rogue", "Shaman", "Warlock", "Warrior", "Memory"];
+const path = ["Knight", "nMage", "Pirest", "Rogue", "Shaman", "Warlock", "Warrior", "Memory"];
 const element = ["Fire", "Ice", "Imaginary", "Physical", "Quantum", "Thunder", "Wind"];
 
 export default function Char({ isEdit = false }) {
@@ -128,7 +128,7 @@ export default function Char({ isEdit = false }) {
                         setSearch("");
                       }}
                     >
-                      <img src={`https://api.hakush.in/hsr/UI/avatarshopicon/${id}.webp`} alt={character.en} />
+                      <img src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarshopicon/avatar/${id}.webp`} alt={character.en} />
                       <p className="font-semibold text-white">{character.en}</p>
                     </div>
                   </DialogClose>
@@ -139,7 +139,7 @@ export default function Char({ isEdit = false }) {
         </DialogContent>
       </Dialog>
       <div className="grid grid-cols-2">
-        <img className="w-[300px]" src={`https://api.hakush.in/hsr/UI/avatarshopicon/${id}.webp`} alt={id} />
+        <img className="w-[300px]" src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarshopicon/avatar/${id}.webp`} alt={id} />
         {id && (
           <div className="flex flex-col gap-5">
             <div>
@@ -180,7 +180,7 @@ export default function Char({ isEdit = false }) {
 function Path({ path, filter, base }) {
   return (
     <div className={`filter ${base.includes(path) ? "bg-black/75 dark:bg-white/15 border border-black dark:border-white" : "border"}`} onClick={() => filter(path)}>
-      <img src={`https://api.hakush.in/hsr/UI/pathicon/${path.toLowerCase()}.webp`} alt={path} />
+      <img src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarprofessiontattoo/profession/BgPaths${path  }.webp`} alt={path} />
     </div>
   );
 }
@@ -188,7 +188,7 @@ function Path({ path, filter, base }) {
 function Element({ ele, filter, damage }) {
   return (
     <div className={`filter ${damage.includes(ele) ? "bg-black/75 dark:bg-white/15 border border-black dark:border-white" : "border"}`} onClick={() => filter(ele)}>
-      <img className="w-full" src={`https://api.hakush.in/hsr/UI/element/${ele.toLowerCase()}.webp`} alt={ele} />
+      <img className="w-full" src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/ui/nature/iconattributemiddle/IconAttribute${ele}.webp`} alt={ele} />
     </div>
   );
 }

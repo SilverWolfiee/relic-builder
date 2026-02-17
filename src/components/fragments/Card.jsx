@@ -251,7 +251,7 @@ export default function Card({ id }) {
 
   return (
     <div className="border-2 rounded-md w-[200px]">
-      <img src={`https://api.hakush.in/hsr/UI/avatarshopicon/${id}.webp`} alt="mybini" />
+      <img src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarshopicon/avatar/${id}.webp`} alt="mybini" />
       <div className="flex flex-col gap-2 p-2">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger className="bg-black text-white dark:bg-white dark:text-black rounded-md px-5 py-2 font-semibold" onClick={() => handleOpenDialog(id)}>

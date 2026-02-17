@@ -113,7 +113,7 @@ export default function Lightcone() {
                         setSearch("");
                       }}
                     >
-                      <img src={`https://api.hakush.in/hsr/UI/lightconemediumicon/${id}.webp`} alt={character.en} />
+                      <img src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/itemfigures/lightcone/${id}.webp`} alt={character.en} />
                       <p className="font-semibold text-white">{character.en}</p>
                     </div>
                   </DialogClose>
@@ -125,7 +125,7 @@ export default function Lightcone() {
       </Dialog>
       <div className="grid grid-cols-2">
         <div>
-          <img className="w-[300px]" src={`https://api.hakush.in/hsr/UI/lightconemediumicon/${id}.webp`} alt={id} />
+          <img className="w-[300px]" src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/itemfigures/lightcone/${id}.webp`} alt={id} />
           <span className="text-xl font-semibold">{descLc.Name}</span>
         </div>
         {id && (
@@ -155,7 +155,7 @@ export default function Lightcone() {
 function Path({ path, filter, base }) {
   return (
     <div className={`filter ${base.includes(path) ? "bg-black/75 dark:bg-white/15 border border-black dark:border-white" : "border"}`} onClick={() => filter(path)}>
-      <img src={`https://api.hakush.in/hsr/UI/pathicon/${path.toLowerCase()}.webp`} alt={path} />
+      <img src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarprofessiontattoo/profession/BgPaths${path}.webp`} alt={path} />
     </div>
   );
 }
