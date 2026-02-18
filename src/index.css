@@ -34,7 +34,20 @@
 
     --radius: 0.5rem;
   }
+  .rarity-5 {
+    background: linear-gradient(180deg, #c38b4d 0%, #7a5a36 100%);
+    border-color: #f3d196;
+  }
 
+  .rarity-4 {
+    background: linear-gradient(180deg, #8e5fb6 0%, #523e7a 100%);
+    border-color: #cda8ef;
+  }
+
+  .rarity-3 {
+    background: linear-gradient(180deg, #4d8cc3 0%, #36507a 100%);
+    border-color: #96c4f3;
+  }
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
