@@ -54,7 +54,7 @@ const idToLc = Object.fromEntries(Object.entries(lcToId).map(([name, id]) => [id
 
 const getLcName = (id) => idToLc[parseInt(id)] || `${id}`;
 
-const path = ["Knight", "nMage", "Pirest", "Rogue", "Shaman", "Warlock", "Warrior", "Memory"];
+const path = ["Knight", "nMage", "Pirest", "Rogue", "Shaman", "Warlock", "Warrior", "Memory", "Joy"];
 const pathMap = { "nMage": "Mage", "Pirest": "Priest" };
 
 export default function Lightcone() {
