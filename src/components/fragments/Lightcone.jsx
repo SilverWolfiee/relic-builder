@@ -43,7 +43,7 @@ const lcToId = {
   "A Secret Vow": 21012, "Planetary Rendezvous": 21011, "Swordplay": 21010, "Landau's Choice": 21009,
   "Eyes of the Prey": 21008, "Shared Feeling": 21007, "The Birth of the Self": 21006, "The Moles Welcome You": 21005,
   "Memories of the Past": 21004, "Only Silence Remains": 21003, "Day One of My New Life": 21002,
-  "Good Night and Sleep Well": 21001, "Post-Op Conversation": 21000, "Reminiscence": 20022, "Shadowburn": 20021,
+  "Good Night and Sleep Well": 21001, "Post-Op Conversation": 21000,"Lingering Tear":20024, "Sneering":20023, "Reminiscence": 20022, "Shadowburn": 20021,
   "Sagacity": 20020, "Mediation": 20019, "Hidden Shadow": 20018, "Pioneering": 20017, "Mutual Demise": 20016,
   "Multiplication": 20015, "Adversarial": 20014, "Passkey": 20013, "Meshing Cogs": 20012, "Loop": 20011,
   "Defense": 20010, "Shattered Home": 20009, "Fine Fruit": 20008, "Darting Arrow": 20007, "Data Bank": 20006,
@@ -55,7 +55,7 @@ const idToLc = Object.fromEntries(Object.entries(lcToId).map(([name, id]) => [id
 const getLcName = (id) => idToLc[parseInt(id)] || `${id}`;
 
 const path = ["Knight", "nMage", "Pirest", "Rogue", "Shaman", "Warlock", "Warrior", "Memory", "Joy"];
-const pathMap = { "nMage": "Mage", "Pirest": "Priest" };
+const pathMap = { "nMage": "Mage", "Pirest": "Priest", "Joy" : "Elation"};
 
 export default function Lightcone() {
   const [listId, setListId] = useState([]);

@@ -11,6 +11,7 @@ const path = ["Knight", "nMage", "Pirest", "Rogue", "Shaman", "Warlock", "Warrio
 const pathMap = {
   "nMage": "Mage",
   "Pirest": "Priest", 
+  "Joy": "Elation",
 };
 const element = ["Fire", "Ice", "Imaginary", "Physical", "Quantum", "Thunder", "Wind"];
 
