@@ -1,7 +1,15 @@
 import { create } from "zustand";
 import { subStats } from "@/utils/dataStat";
-
+const BASE_URL = "https://cdn.neonteam.dev/neonteam";
+let cachedVersion = null;
 const subStat = subStats.map((stat) => stat.name);
+const getVersion = async () => {
+  if (cachedVersion) return cachedVersion;
+  const res = await fetch(`${BASE_URL}/Metadata.json`);
+  const meta = await res.json();
+  cachedVersion = meta.CurrentVersion;
+  return cachedVersion;
+};
 
 export const useRelicStore = create((set) => ({
   relics: {},
@@ -10,10 +18,14 @@ export const useRelicStore = create((set) => ({
   fetchRelics: async () => {
     set({ isLoading: true, error: null });
     try {
-      const res = await fetch("https://api.hakush.in/hsr/data/relicset.json");
+      const version = await getVersion();
+      const res = await fetch(`${BASE_URL}/${version}/relics.json`);
       const data = await res.json();
+      
       set({ relics: data, isLoading: false });
+      console.log("Relics loaded successfully!");
     } catch (err) {
+      console.error("Relic Fetch Error:", err);
       set({ error: err.message, isLoading: false });
     }
   },

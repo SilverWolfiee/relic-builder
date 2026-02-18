@@ -6,8 +6,11 @@ import { useShallow } from "zustand/react/shallow";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 
-const path = ["Knight", "Mage", "Priest", "Rogue", "Shaman", "Warlock", "Warrior", "Memory"];
-
+const path = ["Knight", "nMage", "Pirest", "Rogue", "Shaman", "Warlock", "Warrior", "Memory"];
+const pathMap = {
+  "nMage": "Mage",
+  "Pirest": "Priest", 
+};
 export default function Lightcone() {
   const [listId, setListId] = useState([]);
   const [characterData, setCharacterData] = useState({});
@@ -18,14 +21,14 @@ export default function Lightcone() {
   const [id, setId, level, setLevel, rank, setRank, promotion, setPromotion] = useLightconeStore(useShallow((state) => [state.id, state.setId, state.level, state.setLevel, state.rank, state.setRank, state.promotion, state.setPromotion]));
 
   useEffect(() => {
-    getData("lightcone", (data) => {
+    getData("lightcones", (data) => {
       setListId(Object.keys(data));
       setCharacterData(data);
     });
   }, []);
 
   useEffect(() => {
-    getItem("lightcone", id, (data) => {
+    getItem("lightcones", id, (data) => {
       setDescLc(data);
     });
   }, [id]);
@@ -41,15 +44,19 @@ export default function Lightcone() {
   const handleRankChange = (rankType) => {
     setFilterRankType((prevFilters) => (prevFilters.includes(rankType) ? prevFilters.filter((type) => type !== rankType) : [...prevFilters, rankType]));
   };
-
   const filteredId = listId.filter((id) => {
-    const character = characterData[id];
-    const matchesSearch = character?.en?.toLowerCase().includes(search);
-    const matchesBaseType = filterBaseType.length > 0 ? filterBaseType.includes(character?.baseType) : true;
-    const matchesRankType = filterRankType.length > 0 ? filterRankType.includes(character?.rank) : true;
-    return matchesSearch && matchesBaseType && matchesRankType;
-  });
+    const lc = characterData[id];
+    const matchesSearch = id.includes(search); 
+    const translatedFilters = filterBaseType.map(type => pathMap[type] || type);
+    const matchesBaseType = filterBaseType.length > 0 
+      ? translatedFilters.includes(lc?.path) 
+      : true;
+    const matchesRankType = filterRankType.length > 0 
+      ? filterRankType.some(r => r.includes(lc?.rarity?.toString())) 
+      : true;
 
+    return matchesSearch && matchesBaseType && matchesRankType;
+});
   return (
     <div className="flex flex-col px-3">
       <span className="text-2xl font-bold mb-1">Lightcone</span>
@@ -99,26 +106,24 @@ export default function Lightcone() {
             </div>
 
             {filteredId.reverse().map((id) => {
-              const character = characterData[id];
+              const lc = characterData[id];
+              if (!lc) return null;
+              // dynamically pick the class based on rarity (3, 4, or 5)
+              const rarityClass = `rarity-${lc.rarity}`;
 
-              if (character) {
-                return (
-                  <DialogClose asChild key={id}>
-                    <div
-                      className={`w-[150px] border hover:border-black dark:hover:border-white rounded-lg py-1 px-2 cursor-pointer ${
-                        character.rank === "CombatPowerLightconeRarity5" ? "five-star" : character.rank === "CombatPowerLightconeRarity4" ? "four-star" : "three-star"
-                      }`}
-                      onClick={() => {
-                        setId(id);
-                        setSearch("");
-                      }}
-                    >
-                      <img src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/itemfigures/lightcone/${id}.webp`} alt={character.en} />
-                      <p className="font-semibold text-white">{character.en}</p>
-                    </div>
-                  </DialogClose>
-                );
-              }
+              return (
+                <DialogClose asChild key={id}>
+                  <div
+                    className={`w-[150px] border hover:border-white rounded-lg py-1 px-2 cursor-pointer transition-all ${rarityClass}`}
+                    onClick={() => {
+                      setId(id);
+                      setSearch("");
+                    }}
+                  >
+                    <img src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/itemfigures/lightcone/${id}.webp`} alt={id} />
+                  </div>
+                </DialogClose>
+              );
             })}
           </div>
         </DialogContent>

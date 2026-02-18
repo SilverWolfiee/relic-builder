@@ -3,16 +3,49 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { useReplace } from "@/hooks/useReplace";
 import { useRelicStore } from "@/stores/relic-store";
 
+const relicToId = {
+  "Diviner of Distant Reach": 130,
+  "Ever-Glorious Magical Girl": 129,
+  "Self-Enshrouded Recluse": 128,
+  "World-Remaking Deliverer": 127,
+  "Wavestrider Captain": 126,
+  "Warrior Goddess of Sun and Thunder": 125,
+  "Poet of Mourning Collapse": 124,
+  "Hero of Triumphant Song": 123,
+  "Scholar Lost in Erudition": 122,
+  "Sacerdos' Relived Ordeal": 121,
+  "The Wind-Soaring Valorous": 120,
+  "Iron Cavalry Against the Scourge": 119,
+  "Watchmaker, Master of Dream Machinations": 118,
+  "Pioneer Diver of Dead Waters": 117,
+  "Prisoner in Deep Confinement": 116,
+  "The Ashblazing Grand Duke": 115,
+  "Messenger Traversing Hackerspace": 114,
+  "Longevous Disciple": 113,
+  "Wastelander of Banditry Desert": 112,
+  "Thief of Shooting Meteor": 111,
+  "Eagle of Twilight Line": 110,
+  "Band of Sizzling Thunder": 109,
+  "Genius of Brilliant Stars": 108,
+  "Firesmith of Lava-Forging": 107,
+  "Guard of Wuthering Snow": 106,
+  "Champion of Streetwise Boxing": 105,
+  "Hunter of Glacial Forest": 104,
+  "Knight of Purity Palace": 103,
+  "Musketeer of Wild Wheat": 102,
+  "Passerby of Wandering Cloud": 101
+};
+
+const idToRelic = Object.fromEntries(Object.entries(relicToId).map(([name, id]) => [id, name]));
+
 export default function RelicPiece({ reset, relicMain, name, relicPc, setRelic, mainStat, setMainStat, upgradePc, random, randomStep, setAll = null, children }) {
-  const { relics: data } = useRelicStore();
+  const { relics: data, isLoading } = useRelicStore();
 
-  const relic = Object.values(data).find((item) => item.en === relicPc);
-
-  const pc2 = useReplace(relic?.set["2"].en, relic?.set["2"].ParamList);
-  const pc4 = useReplace(relic?.set["4"].en, relic?.set["4"].ParamList);
+  if (isLoading || !data || Object.keys(data).length === 0) {
+    return <div className="border-b py-5 text-zinc-500 italic">Loading relic database...</div>;
+  }
 
   return (
     <div className="border-b py-5">
@@ -27,14 +60,8 @@ export default function RelicPiece({ reset, relicMain, name, relicPc, setRelic, 
         <div className="col-span-2">
           <p className="text-md">Relic Set</p>
           <ComboboxRelic data={data} name={"relic set"} value={relicPc} setValue={setRelic} />
-          <p>{relicPc}</p>
-          {relicPc && (
-            <>
-              <p>2-pc: {pc2}</p>
-              <p>4-pc: {pc4}</p>
-            </>
-          )}
-          <p className="pt-5">Select Main Stat</p>
+          <p className="font-mono text-sm mt-1">{relicPc}</p>
+          <p className="pt-5 font-semibold">Select Main Stat</p>
           <Combobox data={relicMain} name={"main stat"} value={mainStat} setValue={setMainStat} />
         </div>
         <div className="col-span-3">
@@ -58,38 +85,49 @@ export default function RelicPiece({ reset, relicMain, name, relicPc, setRelic, 
 function ComboboxRelic({ data, name, value, setValue }) {
   const [open, setOpen] = useState(false);
 
+  
+  const uniqueRelics = [];
+  const seenNames = new Set();
+
+  Object.entries(data)
+    .filter(([id, item]) => item.type === "HEAD") // use HEAD to represent the set
+    .reverse()
+    .forEach(([id, item]) => {
+      const displayName = idToRelic[item.set_id] || item.tag || `Set ${item.set_id}`;
+      if (!seenNames.has(displayName)) {
+        seenNames.add(displayName);
+        uniqueRelics.push({ id, item, displayName });
+      }
+    });
+
   return (
     <Popover open={open} onOpenChange={setOpen} modal={true}>
       <PopoverTrigger asChild>
-        <Button variant="outline" role="combobox" aria-expanded={open} className={`justify-between`}>
+        <Button variant="outline" role="combobox" aria-expanded={open} className="justify-between w-64">
           {value ? value : `Select ${name}...`}
         </Button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className="w-64 p-0">
         <Command>
           <CommandInput placeholder={`Search ${name}...`} />
           <CommandEmpty>No relic found.</CommandEmpty>
           <CommandList>
             <CommandGroup>
-              {Object.entries(data)
-                .reverse()
-                .map(([id, data]) => (
-                  <div key={id}>
-                    {data.set[4] && (
-                      <CommandItem
-                        onSelect={(currentValue) => {
-                          setValue(currentValue === value ? value : currentValue);
-                          setOpen(false);
-                        }}
-                      >
-                        <div className="flex items-center gap-5">
-                          <img className="h-[50px]" src={`https://api.hakush.in/hsr/UI/itemfigures/${data.icon.split("/").pop()?.replace(".png", "")}.webp`} alt={data.en} />
-                          <span className="text-lg">{data.en}</span>
-                        </div>
-                      </CommandItem>
-                    )}
+              {uniqueRelics.map(({ id, item, displayName }) => (
+                <CommandItem
+                  key={id}
+                  value={displayName}
+                  onSelect={() => {
+                    setValue(displayName);
+                    setOpen(false);
+                  }}
+                >
+                  <div className="flex items-center gap-3">
+                    <img className="h-8 w-8 object-contain" src={item.icon} alt={displayName} />
+                    <span className="text-sm truncate">{displayName}</span>
                   </div>
-                ))}
+                </CommandItem>
+              ))}
             </CommandGroup>
           </CommandList>
         </Command>
