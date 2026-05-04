@@ -1,7 +1,4 @@
-import { useRelicStore, useBodyStore, useFeetStore, usePlanarStore, useRopeStore } from "@/stores/relic-store";
-import { mainStatBody, mainStatFeet, mainStatLink, mainStatPlanar } from "@/utils/dataStat";
-
-const relicToId = {
+export const relicToId = {
   "Divine-Querying Master Smith" : 132,
   "As Navigator Isee Sees It": 131,
   "Diviner of Distant Reach": 130,
@@ -36,7 +33,7 @@ const relicToId = {
   "Passerby of Wandering Cloud": 101
 };
 
-const planarToId = {
+export const planarToId = {
   "City of Myriad Forms": 326,
   "Punklorde Stage Zero": 325,
   "Tengoku@Livestream": 324,
@@ -64,30 +61,10 @@ const planarToId = {
   "Fleet of the Ageless": 302,
   "Space Sealing Station": 301
 };
+export const idToRelic = Object.fromEntries(
+  Object.entries(relicToId).map(([name, id]) => [id, name])
+);
 
-export function useRelicData(relicPieceName, index) {
-  const { relics } = useRelicStore();
-  const mainStatBodyName = useBodyStore((state) => state.mainStatBody);
-  const mainStatFeetName = useFeetStore((state) => state.mainStatFeet);
-  const mainStatPlanarName = usePlanarStore((state) => state.mainStatPlanar);
-  const mainStatRopeName = useRopeStore((state) => state.mainStatRope);
-
- 
-  const setId = relicToId[relicPieceName] || planarToId[relicPieceName] || null;
-
-  
-  const mainStatBodyId = mainStatBody.find((stat) => stat.name === mainStatBodyName)?.id;
-  const mainStatFeetId = mainStatFeet.find((stat) => stat.name === mainStatFeetName)?.id;
-  const mainStatPlanarId = mainStatPlanar.find((stat) => stat.name === mainStatPlanarName)?.id;
-  const mainStatLinkId = mainStatLink.find((stat) => stat.name === mainStatRopeName)?.id;
-
-  return {
-    relicId: setId ? `6${setId}${index + 1}` : "null",
-    mainStatHeadId: 1,
-    mainStatHandId: 1,
-    mainStatBodyId: mainStatBodyId || "undefined",
-    mainStatFeetId: mainStatFeetId || "undefined",
-    mainStatPlanarId: mainStatPlanarId || "undefined",
-    mainStatLinkId: mainStatLinkId || "undefined",
-  };
-}
+export const idToPlanar = Object.fromEntries(
+  Object.entries(planarToId).map(([name, id]) => [id, name])
+);

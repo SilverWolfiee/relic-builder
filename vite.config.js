@@ -9,4 +9,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      "/neon": {
+        target: "https://cdn.neonteam.dev",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/neon/, ""),
+      },
+    },
+  },
 });

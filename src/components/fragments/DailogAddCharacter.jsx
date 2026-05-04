@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Dialog, DialogContent, DialogFooter, DialogTrigger } from "../ui/dialog";
 import Character from "./Character";
 import { Button } from "../ui/button";
@@ -60,7 +61,7 @@ export default function DialogAddCharacter() {
     resetPlanar();
     resetRope();
   };
-
+  const isTingyun = parseInt(id) === 1202
   const handleAddCharacter = () => {
     const lightcone = {
       id: parseInt(idLc),
@@ -77,18 +78,18 @@ export default function DialogAddCharacter() {
       relic(planarRelicData.relicId, planarRelicData.mainStatPlanarId, subPlanar),
       relic(ropeRelicData.relicId, ropeRelicData.mainStatLinkId, subRope),
     ];
-
+    
     const character = {
       name: name,
       id: parseInt(id),
       hp: 100,
-      sp: energy / 100,
+      sp: isTingyun ? 90 : energy / 100,
       level: level,
       promotion: promotion,
       rank: rank,
       lightcone: lightcone,
       relics: relics,
-      use_technique: technique,
+      use_technique: isTingyun ? false : technique,
     };
 
     if (!id) {
@@ -99,6 +100,8 @@ export default function DialogAddCharacter() {
       alert("Character already exists.");
       return;
     }
+    
+    
     if (!lightcone.id) {
       alert("Select a lightcone first.");
       return;
@@ -133,9 +136,9 @@ export default function DialogAddCharacter() {
           setOpen(false);
         }}
       >
-        <Character />
+        <Character isTingyun={isTingyun} />   
         <DialogFooter>
-          <Button
+           <Button
             variant="destructive"
             onClick={() => {
               reset();

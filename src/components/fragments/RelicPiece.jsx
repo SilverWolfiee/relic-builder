@@ -4,41 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useRelicStore } from "@/stores/relic-store";
+import { idToRelic } from "@/utils/relicData";
 
-const relicToId = {
-  "Diviner of Distant Reach": 130,
-  "Ever-Glorious Magical Girl": 129,
-  "Self-Enshrouded Recluse": 128,
-  "World-Remaking Deliverer": 127,
-  "Wavestrider Captain": 126,
-  "Warrior Goddess of Sun and Thunder": 125,
-  "Poet of Mourning Collapse": 124,
-  "Hero of Triumphant Song": 123,
-  "Scholar Lost in Erudition": 122,
-  "Sacerdos' Relived Ordeal": 121,
-  "The Wind-Soaring Valorous": 120,
-  "Iron Cavalry Against the Scourge": 119,
-  "Watchmaker, Master of Dream Machinations": 118,
-  "Pioneer Diver of Dead Waters": 117,
-  "Prisoner in Deep Confinement": 116,
-  "The Ashblazing Grand Duke": 115,
-  "Messenger Traversing Hackerspace": 114,
-  "Longevous Disciple": 113,
-  "Wastelander of Banditry Desert": 112,
-  "Thief of Shooting Meteor": 111,
-  "Eagle of Twilight Line": 110,
-  "Band of Sizzling Thunder": 109,
-  "Genius of Brilliant Stars": 108,
-  "Firesmith of Lava-Forging": 107,
-  "Guard of Wuthering Snow": 106,
-  "Champion of Streetwise Boxing": 105,
-  "Hunter of Glacial Forest": 104,
-  "Knight of Purity Palace": 103,
-  "Musketeer of Wild Wheat": 102,
-  "Passerby of Wandering Cloud": 101
-};
 
-const idToRelic = Object.fromEntries(Object.entries(relicToId).map(([name, id]) => [id, name]));
+
 
 export default function RelicPiece({ reset, relicMain, name, relicPc, setRelic, mainStat, setMainStat, upgradePc, random, randomStep, setAll = null, children }) {
   const { relics: data, isLoading } = useRelicStore();

@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 
 const lcToId = {
-  "The Finale of a Lie": 23056, "When She Decided to See": 23054, "Dazzled by a Flowery World": 23053, "This Love, Forever": 23052,
+  "Reforged in Hellfire": 23059, "Encounter at Flowering's Coming": 23058,"Welcome to the City of Stars": 23057, "The Finale of a Lie": 23056, "When She Decided to See": 23054, "Dazzled by a Flowery World": 23053, "This Love, Forever": 23052,
   "Though Worlds Apart": 23051, "Never Forget Her Flame": 23050, "To Evernight's Stars": 23049, "Epoch Etched in Golden Blood": 23048,
   "Why Does the Ocean Sing": 23047, "The Hell Where Ideals Burn": 23046, "A Thankless Coronation": 23045, "Thus Burns the Dawn": 23044,
   "Lies Dance on the Breeze": 23043, "Long May Rainbows Adorn the Sky": 23042, "Life Should Be Cast to Flames": 23041,
@@ -23,7 +23,7 @@ const lcToId = {
   "Incessant Rain": 23007, "Patience Is All You Need": 23006, "Moment of Victory": 23005, "In the Name of the World": 23004,
   "But the Battle Isn't Over": 23003, "Something Irreplaceable": 23002, "In the Night": 23001, "Night on the Milky Way": 23000,
   "Elation Brimming With Blessings":24006, "Memory's Curtain Never Falls": 24005, "Eternal Calculus": 24004, "Solitary Healing": 24003, "Texture of Memories": 24002,
-  "Cruising in the Stellar Sea": 24001, "On the Fall of an Aeon": 24000, "Fly Into a Pink Tomorrow": 22006,
+  "Cruising in the Stellar Sea": 24001, "On the Fall of an Aeon": 24000,"Tomorrow, With Us All":22007, "Fly Into a Pink Tomorrow": 22006,
   "The Forever Victual": 22005, "The Great Cosmic Enterprise": 22004, "Ninja Record: Sound Hunt": 22003,
   "For Tomorrow's Journey": 22002, "Hey, Over Here": 22001, "Before the Tutorial Mission Starts": 22000,
   "Today's Good Luck":21065,"Mushy Shroomy's Adventures":21064,"See You at the End": 21062, "Holiday Thermae Escapade": 21061, "A Dream Scented in Wheat": 21060,
@@ -43,7 +43,7 @@ const lcToId = {
   "A Secret Vow": 21012, "Planetary Rendezvous": 21011, "Swordplay": 21010, "Landau's Choice": 21009,
   "Eyes of the Prey": 21008, "Shared Feeling": 21007, "The Birth of the Self": 21006, "The Moles Welcome You": 21005,
   "Memories of the Past": 21004, "Only Silence Remains": 21003, "Day One of My New Life": 21002,
-  "Good Night and Sleep Well": 21001, "Post-Op Conversation": 21000, "Reminiscence": 20022, "Shadowburn": 20021,
+  "Good Night and Sleep Well": 21001, "Post-Op Conversation": 21000,"Lingering Tear":20024, "Sneering":20023, "Reminiscence": 20022, "Shadowburn": 20021,
   "Sagacity": 20020, "Mediation": 20019, "Hidden Shadow": 20018, "Pioneering": 20017, "Mutual Demise": 20016,
   "Multiplication": 20015, "Adversarial": 20014, "Passkey": 20013, "Meshing Cogs": 20012, "Loop": 20011,
   "Defense": 20010, "Shattered Home": 20009, "Fine Fruit": 20008, "Darting Arrow": 20007, "Data Bank": 20006,
@@ -54,8 +54,8 @@ const idToLc = Object.fromEntries(Object.entries(lcToId).map(([name, id]) => [id
 
 const getLcName = (id) => idToLc[parseInt(id)] || `${id}`;
 
-const path = ["Knight", "nMage", "Pirest", "Rogue", "Shaman", "Warlock", "Warrior", "Memory"];
-const pathMap = { "nMage": "Mage", "Pirest": "Priest" };
+const path = ["Knight", "nMage", "Pirest", "Rogue", "Shaman", "Warlock", "Warrior", "Memory", "Joy"];
+const pathMap = { "nMage": "Mage", "Pirest": "Priest", "Joy" : "Elation"};
 
 export default function Lightcone() {
   const [listId, setListId] = useState([]);
@@ -164,7 +164,7 @@ export default function Lightcone() {
                       setSearch("");
                     }}
                   >
-                    <img src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/itemfigures/lightcone/${lcId}.webp`} alt={displayName} />
+                    <img src={`https://static.nanoka.cc/assets/hsr/lightconemediumicon/${lcId}.webp`} alt={displayName} />
                     <p className="font-semibold text-white text-center drop-shadow-md text-[10px] leading-tight px-1 h-8 flex items-center justify-center">
                       {displayName}
                     </p>
@@ -177,7 +177,7 @@ export default function Lightcone() {
       </Dialog>
       <div className="grid grid-cols-2">
         <div>
-          <img className="w-[300px]" src={`https://cdn.neonteam.dev/neonteam/assets/spriteoutput/itemfigures/lightcone/${id}.webp`} alt={id} />
+          <img className="w-[300px]" src={`https://static.nanoka.cc/assets/hsr/lightconemediumicon/${id}.webp`} alt={id} />
           <p className="text-xl font-semibold">{getLcName(id)}</p>
         </div>
         {id && (

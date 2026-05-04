@@ -3,7 +3,7 @@ let cachedVersion = null;
 //get current game version
 const getVersion = async () => {
   if (cachedVersion) return cachedVersion;
-  const res = await fetch(`${BASE_URL}/Metadata.json`);
+  const res = await fetch(`neon/neonteam/Metadata.json`);
   const meta = await res.json();
   cachedVersion = meta.CurrentVersion;
   return cachedVersion;
