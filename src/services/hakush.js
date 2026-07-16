@@ -1,4 +1,4 @@
-const BASE_URL = "https://cdn.neonteam.dev/neonteam";
+const BASE_URL = "/neon/neonteam/";
 let cachedVersion = null;
 //get current game version
 const getVersion = async () => {

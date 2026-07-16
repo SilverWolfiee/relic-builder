@@ -37,6 +37,8 @@ const relicToId = {
 };
 
 const planarToId = {
+  "Cosmic Life Sciences Institute" : 328,
+  "Fallen Star Anchorage" :327,
   "City of Myriad Forms": 326,
   "Punklorde Stage Zero": 325,
   "Tengoku@Livestream": 324,

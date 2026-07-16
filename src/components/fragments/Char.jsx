@@ -122,7 +122,12 @@ const charToId = {
   Ashveil: 1504,
   Evanescia: 1505,
   "Silver Wolf Lv.999": 1506,
-  "Mortenax Blade" : 1507
+  "Mortenax Blade" : 1507,
+  "Rin Tohsaka" : 1508,
+  "Gilgamesh" : 1509,
+  "Himeko Nova": 1510,
+  "Robin • Summeretto" : 1512,
+  "Aventurine • Waveflair" : 1513,
 };
 
 const idToChar = Object.fromEntries(

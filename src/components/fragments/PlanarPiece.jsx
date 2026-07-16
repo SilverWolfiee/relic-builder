@@ -6,6 +6,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { useRelicStore } from "@/stores/relic-store";
 
 const planarToId = {
+  "Cosmic Life Sciences Institute" : 328,
+  "Fallen Star Anchorage" :327,
   "City of Myriad Forms": 326,
   "Punklorde Stage Zero": 325,
   "Tengoku@Livestream": 324,
