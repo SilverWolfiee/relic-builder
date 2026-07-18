@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/neon/:path*",
+      "destination": "https://cdn.neonteam.dev/:path*"
+    }
+  ]
+}
