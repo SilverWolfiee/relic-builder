@@ -1,8 +1,5 @@
 {
   "rewrites": [
-    {
-      "source": "/neon/:path*",
-      "destination": "https://cdn.neonteam.dev/:path*"
-    }
+    { "source": "/neon/:path*", "destination": "https://cdn.neonteam.dev/:path*" }
   ]
 }
