@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { subStats } from "@/utils/dataStat";
-const BASE_URL = "https://cdn.neonteam.dev/neonteam";
+const BASE_URL = "/neon/neonteam";
 let cachedVersion = null;
 const subStat = subStats.map((stat) => stat.name);
 const getVersion = async () => {

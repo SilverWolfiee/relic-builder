@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 
 const lcToId = {
+  'Upon the First Echo of "Aha"':23065,
   "Summer Rides the Surf" : 23064,
   "Rise and Sing" :23063,
   "I Am As You Behold" : 23062,
@@ -23,6 +24,7 @@ const lcToId = {
   "Encounter at Flowering's Coming": 23058,
   "Welcome to the City of Stars": 23057,
   "The Finale of a Lie": 23056,
+  "Colors for Tomorrow" :  23055,
   "When She Decided to See": 23054,
   "Dazzled by a Flowery World": 23053,
   "This Love, Forever": 23052,
@@ -85,6 +87,7 @@ const lcToId = {
   "Texture of Memories": 24002,
   "Cruising in the Stellar Sea": 24001,
   "On the Fall of an Aeon": 24000,
+  "See You at the World's End!" : 22009,
   "Tomorrow, With Us All": 22007,
   "Fly Into a Pink Tomorrow": 22006,
   "The Forever Victual": 22005,
@@ -93,6 +96,7 @@ const lcToId = {
   "For Tomorrow's Journey": 22002,
   "Hey, Over Here": 22001,
   "Before the Tutorial Mission Starts": 22000,
+  "A Little Getaway": 21066,
   "Today's Good Luck": 21065,
   "Mushy Shroomy's Adventures": 21064,
   "See You at the End": 21062,

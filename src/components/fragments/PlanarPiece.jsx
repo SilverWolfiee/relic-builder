@@ -6,6 +6,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { useRelicStore } from "@/stores/relic-store";
 
 const planarToId = {
+  "Subspace ASC Center" : 330,
+  "God's Moment of Joy" :  329,
   "Cosmic Life Sciences Institute" : 328,
   "Fallen Star Anchorage" :327,
   "City of Myriad Forms": 326,
@@ -34,7 +36,7 @@ const planarToId = {
   "Pan-Cosmic Commercial Enterprise": 303,
   "Fleet of the Ageless": 302,
   "Space Sealing Station": 301
-};
+}
 
 const idToPlanar = Object.fromEntries(Object.entries(planarToId).map(([name, id]) => [id, name]));
 

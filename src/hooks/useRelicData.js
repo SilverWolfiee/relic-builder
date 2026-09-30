@@ -2,6 +2,8 @@ import { useRelicStore, useBodyStore, useFeetStore, usePlanarStore, useRopeStore
 import { mainStatBody, mainStatFeet, mainStatLink, mainStatPlanar } from "@/utils/dataStat";
 
 const relicToId = {
+  "The Edacious Heretic" :134,
+  "Dreamlit Actor" :133,
   "Divine-Querying Master Smith" : 132,
   "As Navigator Isee Sees It": 131,
   "Diviner of Distant Reach": 130,
@@ -37,6 +39,8 @@ const relicToId = {
 };
 
 const planarToId = {
+  "Subspace ASC Center" : 330,
+  "God's Moment of Joy" :  329,
   "Cosmic Life Sciences Institute" : 328,
   "Fallen Star Anchorage" :327,
   "City of Myriad Forms": 326,

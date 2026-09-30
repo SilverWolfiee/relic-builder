@@ -1,4 +1,6 @@
 export const relicToId = {
+  "The Edacious Heretic" :134,
+  "Dreamlit Actor" :133,
   "Divine-Querying Master Smith" : 132,
   "As Navigator Isee Sees It": 131,
   "Diviner of Distant Reach": 130,
@@ -33,7 +35,9 @@ export const relicToId = {
   "Passerby of Wandering Cloud": 101
 };
 
-export const planarToId = {
+const planarToId = {
+  "Subspace ASC Center" : 330,
+  "God's Moment of Joy" :  329,
   "Cosmic Life Sciences Institute" : 328,
   "Fallen Star Anchorage" :327,
   "City of Myriad Forms": 326,
@@ -62,7 +66,7 @@ export const planarToId = {
   "Pan-Cosmic Commercial Enterprise": 303,
   "Fleet of the Ageless": 302,
   "Space Sealing Station": 301
-};
+}
 export const idToRelic = Object.fromEntries(
   Object.entries(relicToId).map(([name, id]) => [id, name])
 );

@@ -119,6 +119,7 @@ const charToId = {
   Cyrene: 1415,
   Sparxie: 1501,
   "Yao Guang": 1502,
+  "Pearl" : 1503,
   Ashveil: 1504,
   Evanescia: 1505,
   "Silver Wolf Lv.999": 1506,
@@ -126,6 +127,7 @@ const charToId = {
   "Rin Tohsaka" : 1508,
   "Gilgamesh" : 1509,
   "Himeko Nova": 1510,
+  "Aeon • Aha" : 1511,
   "Robin • Summeretto" : 1512,
   "Aventurine • Waveflair" : 1513,
 };
